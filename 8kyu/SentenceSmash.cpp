@@ -1,39 +1,29 @@
-// Description:
-// Consider an array/list of sheep where some sheep may be missing from their place. We need a function that counts the number of sheep present in the array (true means present).
-
-// For example,
-
-// { true,  true,  true,  false,
-//   true,  true,  true,  true,
-//   true,  false, true,  false,
-//   true,  false, false, true,
-//   true,  true,  true,  true,
-//   false, false, true,  true }
-
+//Sentence Smash
+//Write a function that takes an array of words and smashes them together into a sentence and returns the sentence. You can ignore any need to sanitize words or add punctuation, but you should add spaces between each word. Be careful, there shouldn't be a space at the beginning or the end of the sentence!
 
 //Solution Here
-#include <vector>
 #include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
 
-using namespace std; 
-
-int count_sheep(vector<bool> arr) {
-  int count = 0;
-  for (auto status : arr) {
-    if (status == true) {
-      count = count + 1;
-    }
-  }
-  return count;
+string smash(const vector<string>& words)
+{  
+   int length = size(words);
+   string smashed="";
+   for (int i=0; i<length; i++){
+     if (length>1 && i>0){
+       smashed = smashed + " " + words[i];
+     }
+     else 
+       smashed = smashed + words[i];
+   }
+   return smashed;
 }
 
-int main() {
-	vector arr= { true,  true,  true,  false,
-      true,  true,  true,  true,
-      true,  false, true,  false,
-      true,  false, false, true,
-      true,  true,  true,  true,
-      false, false, true,  true };
-	cout<< count_sheep(arr);
-
+int main()
+{   
+	vector<string> words = {"hello", "world", "this", "is", "great"};
+	cout << smash(words);
 }
+
